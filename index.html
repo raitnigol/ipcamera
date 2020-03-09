@@ -4,59 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>172.17.15.57 - Kaamera</title>
-
-    <style>
-        #jpgFromCamera {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 80%;
-            height: 80%;
-        }
-
-    </style>
-    <script>
-        // vaheta pilt ümber (funktsioon startTimer() funktsiooni jaoks)
-        function displayNextJpg() {
-            var source = "http://172.17.15.57/jpg/image.jpg",
-            timestamp = (new Date().getTime()),
-            newUrl = source + "?_=" + timestamp;
-
-            document.getElementById("jpgFromCamera").src = newUrl;
-        }
-    
-        // refreshi pilti iga 500 ms tagant
-        function startTimer() {
-            setInterval(DownloadImage, 100);
-        }
-
-        // tee uus objekt Headerite jaoks
-        var myHeaders = new Headers();
-        myHeaders.set('Cache-Control', 'no-cache');
-
-        function DownloadImage() {
-            var image = new Image(),
-            x = document.getElementById("jpgFromCamera");
-
-            image.onload = function() {
-                x.src = image.src;
-            };
-
-            image.src = "http://172.17.15.57/jpg/image.jpg" + "?_=" + (+new Date());
-        }
-    </script>
-
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="startTimer()">
     <div id="cameraStream">
-        <img id="jpgFromCamera" 
-        src="http://172.17.15.57/jpg/image.jpg" 
-        width="720" 
-        heigth="576"
-        alt="Reload the page with F5 if image fails to load."
-        border="0"
-        />
+        <img id="jpgFromCamera" src="http://172.17.15.57/jpg/image.jpg"/>
     </div>
 </body>
 </html>
