@@ -1,5 +1,6 @@
 // käivita taimer
 function startTimer() {
+    // downloadi uus pilt iga 100ms tagant
     setInterval(DownloadImage, 100);
 }
 
